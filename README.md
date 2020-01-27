@@ -5,7 +5,7 @@ In this assignment, you'll be implementing a basic logistic regression model to 
 
 Working files:
 -------------
-You will be restricted to work with 'model.py' and 'Assignment3-Logistic Regression.ipynb'. On running and working through the 'Assignment3-Linear Regression.ipynb', a file named 'hyper_param.json' would be generated.
+You will be restricted to work with 'model.py' and 'Assignment3-Logistic Regression.ipynb'. On running and working through the 'Assignment3-Logistic Regression.ipynb', a file named 'hyper_param.json' would be generated.
 
 Data:
 ----
