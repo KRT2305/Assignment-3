@@ -14,7 +14,7 @@ def sigmoid(z):
     output = None
 
     '''WRITE YOUR CODE HERE (one line of vectorised code)'''
-
+    output=1/(1+np.exp(-z))
 
     '''END YOUR CODE HERE'''
 
@@ -54,8 +54,13 @@ class LogisticRegression(object):
         '''START YOUR CODE HERE'''
 
         # Make a prediction using the sigmoid function and the weights
-
-
+        pred=sigmoid(np.dot(X_data,self.weights))
+        n=Y_data.shape[0]
+        loss=-(Y_data*np.log(pred) + (1-Y_data)*np.log(1-pred))/n
+        diff=np.subtract(pred,Y_data)
+        grad=np.dot(X_data.T,diff)
+        grad/=n
+        loss=np.sum(loss)
         # Calculate the loss and gradients
 
 
@@ -117,16 +122,17 @@ class LogisticRegression(object):
 
         '''START YOUR CODE HERE'''
         # Initialise the weights in the variable self.weights
-
-
+        size=X_train.shape[1]
+        self.weights=np.zeros((size,1))
         # Perform iterations, use the loss function above to get the loss and gradient at each 
         # epoch and update wights using the learning rate
         for i in range(num_iters):
             loss, grad = self.loss(X_train, Y_train)
 
             # Add regularisation to the loss (optional)
-
+            
             # Update weights
+            self.weights=self.weights-lr*grad
 
             if i % (num_iters // num_print) == 0:
                 print("Iteration %d of %d. Loss: %f LR: %f" % (i, num_iters, loss, lr))
